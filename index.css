@@ -10,14 +10,23 @@
     display: block;
 }
 
+h1 {
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
 .quizIntro {
     text-align: center;
 }
 
-.stats {
-    font-size: 18px;
+body {
+    background: url('https://wallpaperplay.com/walls/full/9/0/a/77836.jpg') fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.body {
-    background-image: url('https://fbcoverstreet.com/content/4crUTR9RIVqFSh8lKsXwIUNu6jbanGsx42lTS1268qQecoWhrrAraXEiP7XsyimC.jpg');
-}
+@media only screen and (min-width: 640px) {}
+
+@media only screen and (min-width: 320px) {}
+
+@media only screen and (min-width: 1190px) {}

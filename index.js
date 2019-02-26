@@ -79,6 +79,7 @@ function createNextQuestion() {
                     <input type="radio" name="answer" required="required" value="${STORE.answers[3]}">
                     <span>${STORE.answers[3]}</span>
                   </label>
+                  <br>
                     <button type ="submit" class="submitButton">Submit </button>
                 </form>
             </div>`
