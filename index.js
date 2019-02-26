@@ -46,17 +46,22 @@ function updateStore() {
 
 function render() {
   $('.questions').html(createNextQuestion());
+  if (qNumber < 5) {
+    changeQuestionNumber();
+  }
+}
+
+function changeQuestionNumber() {
+  $('.number').text(qNumber + 1);
 }
 
 function createNextQuestion() {
   //might need labels for radios
   if (qNumber < 5) {
     //increment question counter
-    let translateNum = qNumber + 1;
-    $('.number').text(translateNum);
     updateStore();
     return `<div class = "question-${qNumber}">
-                <h1> #${translateNum}. ${STORE.currq} </h1>
+                <h1>${STORE.currq} </h1>
                 <form>
                   <label class="block">
                     <input type="radio" name="answer" required="required" value="${STORE.answers[0]}">
@@ -78,7 +83,7 @@ function createNextQuestion() {
                 </form>
             </div>`
   } else {
-    //this means you finsihed question 5
+    //this means you finished question 5
     finishQuiz();
   }
 }
@@ -107,7 +112,7 @@ function correctAnswer() {
 
 function wrongAnswer() {
   let output = `<div>
-                  <p>That was incorrect. The correct answer is ${STORE.correctAnswer}.</p>
+                  <p>That was incorrect. The correct answer is ${STORE.correctAnswers}.</p>
                   <button type=button class="continueButton">Continue!</button>
                </div>`
   $('.questions').html(output);

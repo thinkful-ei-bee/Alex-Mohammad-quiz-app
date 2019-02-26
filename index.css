@@ -1,6 +1,6 @@
 .logo {
     height: 10%;
-    width: 50%;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -14,6 +14,10 @@
     text-align: center;
 }
 
-.number {
-    font-size: 20px;
+.stats {
+    font-size: 18px;
+}
+
+.body {
+    background-image: url('https://fbcoverstreet.com/content/4crUTR9RIVqFSh8lKsXwIUNu6jbanGsx42lTS1268qQecoWhrrAraXEiP7XsyimC.jpg');
 }
