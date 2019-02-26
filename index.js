@@ -52,18 +52,19 @@ function createNextQuestion() {
   //might need labels for radios
   if (qNumber < 5) {
     //increment question counter
-    $('.number').text(qNumber + 1);
+    let translateNum = qNumber + 1;
+    $('.number').text(translateNum);
     updateStore();
     return `<div class = "question-${qNumber}">
-                <h1> ${STORE.question} </h1>
+                <h1> #${translateNum}. ${STORE.currq} </h1>
                 <form>
-                    <input type="radio" name="answer" value="${STORE.answers[0]}">
+                    <input type="radio" name="answer" required="required" value="${STORE.answers[0]}">
                     <span>${STORE.answers[0]}</span>
-                    <input type="radio" name="answer" value="${STORE.answers[1]}">
+                    <input type="radio" name="answer" required="required" value="${STORE.answers[1]}">
                     <span>${STORE.answers[1]}</span>
-                    <input type="radio" name="answer" value="${STORE.answers[2]}">
+                    <input type="radio" name="answer" required="required" value="${STORE.answers[2]}">
                     <span>${STORE.answers[2]}</span>
-                    <input type="radio" name="answer" value="${STORE.answers[3]}">
+                    <input type="radio" name="answer" required="required" value="${STORE.answers[3]}">
                     <span>${STORE.answers[3]}</span>
                     <button type ="submit" class="submitButton">Submit </button>
                 </form>
@@ -78,7 +79,7 @@ function answerSumbitted() {
   $('form').on('submit', function(event) {
     event.preventDefault();
     let ans = $('input[name=\'answer\']:checked');
-    if (ans.val() === STORE.correctAnswer) {
+    if (ans.val() === STORE.correctAnswers) {
       correctAnswer();
     } else {
       wrongAnswer();
