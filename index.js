@@ -19,16 +19,30 @@ const Questions = [{
   },
   {
     question: 'Who is the actor for Michael Scott?',
-    answers: [],
-    correctAnswer: 'A',
+    answers: ['John Krasinski', 'Rainn Wilson', 'Ed Helms', 'Steve Carell'],
+    correctAnswer: 'Steve Carell',
   },
   {
-    question: 'A',
-    answers: [],
-    correctAnswer: 'A',
+    question: 'What type of farm does Dwight own?',
+    answers: ['Carrot Farm', 'Beet Farm', 'Bear Farm', 'Bettle Farm'],
+    correctAnswer: 'Beet Farm',
   },
 ];
 
+const STORE = {
+  currqNum: 0,
+  currq: "Default",
+  answers: [],
+  correctAnswers: "Default",
+
+};
+
+function updateStore() {
+  STORE.currqNum = qNumber;
+  STORE.currq = Questions[qNumber].question;
+  STORE.answers = Questions[qNumber].answers;
+  STORE.correctAnswers = Questions[qNumber].correctAnswer;
+}
 
 function render() {
   $('.questions').html(createNextQuestion());
@@ -39,17 +53,18 @@ function createNextQuestion() {
   if (qNumber < 5) {
     //increment question counter
     $('.number').text(qNumber + 1);
+    updateStore();
     return `<div class = "question-${qNumber}">
-                <h1> ${Questions[qNumber].question} </h1>
+                <h1> ${STORE.question} </h1>
                 <form>
-                    <input type="radio" name="answer" value="${Questions[qNumber].answers[0]}">
-                    <span>${Questions[qNumber].answers[0]}</span>
-                    <input type="radio" name="answer" value="${Questions[qNumber].answers[1]}">
-                    <span>${Questions[qNumber].answers[1]}</span>
-                    <input type="radio" name="answer" value="${Questions[qNumber].answers[2]}">
-                    <span>${Questions[qNumber].answers[2]}</span>
-                    <input type="radio" name="answer" value="${Questions[qNumber].answers[3]}">
-                    <span>${Questions[qNumber].answers[3]}</span>
+                    <input type="radio" name="answer" value="${STORE.answers[0]}">
+                    <span>${STORE.answers[0]}</span>
+                    <input type="radio" name="answer" value="${STORE.answers[1]}">
+                    <span>${STORE.answers[1]}</span>
+                    <input type="radio" name="answer" value="${STORE.answers[2]}">
+                    <span>${STORE.answers[2]}</span>
+                    <input type="radio" name="answer" value="${STORE.answers[3]}">
+                    <span>${STORE.answers[3]}</span>
                     <button type ="submit" class="submitButton">Submit </button>
                 </form>
             </div>`
@@ -63,8 +78,7 @@ function answerSumbitted() {
   $('form').on('submit', function(event) {
     event.preventDefault();
     let ans = $('input[name=\'answer\']:checked');
-    console.log(ans.val());
-    if (ans.val() === Questions[qNumber].correctAnswer) {
+    if (ans.val() === STORE.correctAnswer) {
       correctAnswer();
     } else {
       wrongAnswer();
@@ -84,7 +98,7 @@ function correctAnswer() {
 
 function wrongAnswer() {
   let output = `<div>
-                  <p>That was incorrect. The correct answer is ${Questions[qNumber].correctAnswer}.</p>
+                  <p>That was incorrect. The correct answer is ${STORE.correctAnswer}.</p>
                   <button type=button class="continueButton">Continue!</button>
                </div>`
   $('.questions').html(output);
@@ -124,7 +138,6 @@ function beginQuiz() {
   correct = 0;
   $('.quizIntro').on('click', '.beginButton', function(event) {
     $('.beginButton').remove();
-    console.log("Hello");
     render();
     answerSumbitted();
     nextQuestion();
