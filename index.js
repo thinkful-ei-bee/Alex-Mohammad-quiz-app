@@ -58,14 +58,22 @@ function createNextQuestion() {
     return `<div class = "question-${qNumber}">
                 <h1> #${translateNum}. ${STORE.currq} </h1>
                 <form>
+                  <label class="block">
                     <input type="radio" name="answer" required="required" value="${STORE.answers[0]}">
                     <span>${STORE.answers[0]}</span>
+                  </label>
+                  <label class="block">
                     <input type="radio" name="answer" required="required" value="${STORE.answers[1]}">
                     <span>${STORE.answers[1]}</span>
+                  </label>
+                  <label class="block">
                     <input type="radio" name="answer" required="required" value="${STORE.answers[2]}">
                     <span>${STORE.answers[2]}</span>
+                  </label>
+                  <label class="block">
                     <input type="radio" name="answer" required="required" value="${STORE.answers[3]}">
                     <span>${STORE.answers[3]}</span>
+                  </label>
                     <button type ="submit" class="submitButton">Submit </button>
                 </form>
             </div>`
