@@ -29,9 +29,6 @@ const Questions = [{
   },
 ];
 
-const STORE = {
-
-};
 
 function render() {
   $('.questions').html(createNextQuestion());
@@ -40,6 +37,8 @@ function render() {
 function createNextQuestion() {
   //might need labels for radios
   if (qNumber < 5) {
+    //increment question counter
+    $('.number').text(qNumber + 1);
     return `<div class = "question-${qNumber}">
                 <h1> ${Questions[qNumber].question} </h1>
                 <form>
@@ -80,6 +79,7 @@ function correctAnswer() {
                </div>`
   $('.questions').html(output);
   correct++;
+  $('.grade').text(correct);
 }
 
 function wrongAnswer() {
