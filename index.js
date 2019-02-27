@@ -1,39 +1,40 @@
+/* eslint-disable no-undef */
 'use strict';
 let qNumber = 0;
 let correct = 0;
 
 const Questions = [{
-    question: 'In the pilot, who started their first day at Dunder Mifflin Scranton?',
-    answers: ['Jim Halpert', 'Ryan Howard', 'Michael Scott', 'Erin Hannon'],
-    correctAnswer: 'Ryan Howard',
-  },
-  {
-    question: `What is Michael Scott's Middle Name?`,
-    answers: ['Chandler', 'Michael', 'Gary', 'Robert'],
-    correctAnswer: 'Gary',
-  },
-  {
-    question: 'What county in Pennsylvania is Dunder Mifflin Scranton branch located?',
-    answers: ['Lackawanna County', 'Somerset County', 'Bedford County', 'Lancaster County'],
-    correctAnswer: 'Lackawanna County',
-  },
-  {
-    question: 'Who is the actor for Michael Scott?',
-    answers: ['John Krasinski', 'Rainn Wilson', 'Ed Helms', 'Steve Carell'],
-    correctAnswer: 'Steve Carell',
-  },
-  {
-    question: 'What type of farm does Dwight own?',
-    answers: ['Carrot Farm', 'Beet Farm', 'Bear Farm', 'Bettle Farm'],
-    correctAnswer: 'Beet Farm',
-  },
+  question: 'In the pilot, who started their first day at Dunder Mifflin Scranton?',
+  answers: ['Jim Halpert', 'Ryan Howard', 'Michael Scott', 'Erin Hannon'],
+  correctAnswer: 'Ryan Howard',
+},
+{
+  question: 'What is Michael Scott\'s Middle Name?',
+  answers: ['Chandler', 'Michael', 'Gary', 'Robert'],
+  correctAnswer: 'Gary',
+},
+{
+  question: 'What county in Pennsylvania is Dunder Mifflin Scranton branch located?',
+  answers: ['Lackawanna County', 'Somerset County', 'Bedford County', 'Lancaster County'],
+  correctAnswer: 'Lackawanna County',
+},
+{
+  question: 'Who is the actor for Michael Scott?',
+  answers: ['John Krasinski', 'Rainn Wilson', 'Ed Helms', 'Steve Carell'],
+  correctAnswer: 'Steve Carell',
+},
+{
+  question: 'What type of farm does Dwight own?',
+  answers: ['Carrot Farm', 'Beet Farm', 'Bear Farm', 'Bettle Farm'],
+  correctAnswer: 'Beet Farm',
+},
 ];
 
 const STORE = {
   currqNum: 0,
-  currq: "Default",
+  currq: 'Default',
   answers: [],
-  correctAnswers: "Default",
+  correctAnswers: 'Default',
 
 };
 
@@ -82,7 +83,7 @@ function createNextQuestion() {
                   <br>
                     <button type ="submit" class="submitButton">Submit </button>
                 </form>
-            </div>`
+            </div>`;
   } else {
     //this means you finished question 5
     finishQuiz();
@@ -105,7 +106,7 @@ function correctAnswer() {
   let output = `<div>
                   <p>That was correct!</p>
                   <button type=button class="continueButton">Continue!</button>
-               </div>`
+               </div>`;
   $('.questions').html(output);
   correct++;
   $('.grade').text(correct);
@@ -115,7 +116,7 @@ function wrongAnswer() {
   let output = `<div>
                   <p>That was incorrect. The correct answer is ${STORE.correctAnswers}.</p>
                   <button type=button class="continueButton">Continue!</button>
-               </div>`
+               </div>`;
   $('.questions').html(output);
 }
 
@@ -132,7 +133,7 @@ function finishQuiz() {
   let output = `<div>
                   <p>Great job you got ${correct} out of 5 questions correct! If you would like to try again please press the restart button.</p>
                   <button type=button class="restartButton">Restart!</button>
-               </div>`
+               </div>`;
   $('.questions').html(output);
 }
 
