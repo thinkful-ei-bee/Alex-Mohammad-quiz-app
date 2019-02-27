@@ -139,10 +139,19 @@ function finishQuiz() {
 
 function resetQuiz() {
   $('main').on('click', '.restartButton', function(event) {
-    console.log('restart');
-    location.reload();
+    let output = `<h1>Test your knowledge on the Office TV Show!</h1>
+                  <button type="button" class="beginButton">Begin!</button>`
+    $('.quizIntro').html(output);
+    resetStartPage();
+    beginQuiz();
   });
   //
+}
+
+function resetStartPage() {
+  $('.questions').html("");
+  $('.grade').text(0);
+  $('.number').text(0);
 }
 
 
