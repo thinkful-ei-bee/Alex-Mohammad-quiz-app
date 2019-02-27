@@ -62,28 +62,28 @@ function createNextQuestion() {
     //increment question counter
     updateStore();
     return `<div class = "question-${STORE.currqNum}">
-                <h1>${STORE.currq} </h1>
-                <form>
-                  <label class="block">
-                    <input type="radio" name="answer" required="required" value="${STORE.answers[0]}">
-                    <span>${STORE.answers[0]}</span>
-                  </label>
-                  <label class="block">
-                    <input type="radio" name="answer" required="required" value="${STORE.answers[1]}">
-                    <span>${STORE.answers[1]}</span>
-                  </label>
-                  <label class="block">
-                    <input type="radio" name="answer" required="required" value="${STORE.answers[2]}">
-                    <span>${STORE.answers[2]}</span>
-                  </label>
-                  <label class="block">
-                    <input type="radio" name="answer" required="required" value="${STORE.answers[3]}">
-                    <span>${STORE.answers[3]}</span>
-                  </label>
-                  <br>
-                    <button type ="submit" class="submitButton">Submit </button>
-                </form>
-            </div>`
+               <h1>${STORE.currq} </h1>
+               <form>
+                 <label class="block">
+                   <input type="radio" name="answer" required="required" value="${STORE.answers[0]}">
+                   <span>${STORE.answers[0]}</span>
+                 </label>
+                 <label class="block">
+                   <input type="radio" name="answer" required="required" value="${STORE.answers[1]}">
+                   <span>${STORE.answers[1]}</span>
+                 </label>
+                 <label class="block">
+                   <input type="radio" name="answer" required="required" value="${STORE.answers[2]}">
+                   <span>${STORE.answers[2]}</span>
+                 </label>
+                 <label class="block">
+                   <input type="radio" name="answer" required="required" value="${STORE.answers[3]}">
+                   <span>${STORE.answers[3]}</span>
+                 </label>
+                 <br>
+                   <button type ="submit" class="submitButton">Submit </button>
+               </form>
+           </div>`
   } else {
     //this means you finished question 5
     return finishQuiz();

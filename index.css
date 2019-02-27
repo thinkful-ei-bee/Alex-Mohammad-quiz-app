@@ -5,9 +5,15 @@
     margin-right: auto;
     display: block;
     margin-top: 15%;
+<<<<<<< HEAD
 }
 
 button {
+=======
+ }
+ 
+ button {
+>>>>>>> 6549f9650e7acd127b6507f911f50f1b393a4f75
     background-color: rgb(23, 4, 109);
     border: none;
     color: white;
@@ -21,6 +27,7 @@ button {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 5px;
+<<<<<<< HEAD
 }
 
 button:hover {
@@ -41,12 +48,35 @@ input[type="radio"] {
 }
 
 h1 {
+=======
+ }
+ 
+ button:hover {
+    background-color: #4CAF50;
+    color: white;
+ }
+ 
+ .block {
+    font-size: 25pt;
+    height: 25pt;
+    display: block;
+ }
+ 
+ input[type="radio"] {
+    border: 0px;
+    width: 3em;
+    height: 3em;
+ }
+ 
+ h1 {
+>>>>>>> 6549f9650e7acd127b6507f911f50f1b393a4f75
     color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-}
-
-.quizIntro {
+ }
+ 
+ .quizIntro {
     text-align: center;
+<<<<<<< HEAD
 }
 
 body {
@@ -61,6 +91,22 @@ ul {
 }
 
 @media (max-width: 640px) {
+=======
+ }
+ 
+ body {
+    background: url('Images/Background2.png') fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
+ 
+ ul {
+    list-style: none;
+    font-size: 25pt;
+ }
+ 
+ @media (max-width: 640px) {
+>>>>>>> 6549f9650e7acd127b6507f911f50f1b393a4f75
     .logo {
         margin-top: 20%;
         height: 7%;
@@ -106,4 +152,10 @@ ul {
         width: 3em;
         height: 3em;
     }
+<<<<<<< HEAD
 }
+=======
+ }
+ 
+ 
+>>>>>>> 6549f9650e7acd127b6507f911f50f1b393a4f75
