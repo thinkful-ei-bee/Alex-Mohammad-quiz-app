@@ -103,7 +103,7 @@ function answerSumbitted() {
 
 function correctAnswer() {
   let output = `<div>
-                  <p>That was correct!</p>
+                  <h1>That was correct!</h1>
                   <button type=button class="continueButton">Continue!</button>
                </div>`
   STORE.questionStatement = output;
@@ -112,7 +112,7 @@ function correctAnswer() {
 
 function wrongAnswer() {
   let output = `<div>
-                  <p>That was incorrect. The correct answer is ${STORE.correctAnswers}.</p>
+                  <h1>That was incorrect. The correct answer is ${STORE.correctAnswers}.</h1>
                   <button type=button class="continueButton">Continue!</button>
                </div>`
   STORE.questionStatement = output;
@@ -133,7 +133,7 @@ function nextQuestion() {
 
 function finishQuiz() {
   let output = `<div>
-                  <p>Great job you got ${STORE.numCorrect} out of 5 questions correct! If you would like to try again please press the restart button.</p>
+                  <h1>Great job you got ${STORE.numCorrect} out of 5 questions correct! If you would like to try again please press the restart button.</h1>
                   <button type=button class="restartButton">Restart!</button>
                </div>`
   return output;
