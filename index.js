@@ -1,6 +1,4 @@
 'use strict';
-let qNumber = 0;
-let correct = 0;
 
 const Questions = [{
     question: 'In the pilot, who started their first day at Dunder Mifflin Scranton?',
@@ -31,36 +29,37 @@ const Questions = [{
 
 const STORE = {
   currqNum: 0,
-  currq: "Default",
+  currq: "",
   answers: [],
-  correctAnswers: "Default",
-
+  correctAnswers: "",
+  questionStatement: "",
+  intro: `<h1>Test your knowledge on the Office TV Show!</h1>
+  <button type="button" class="beginButton">Begin!</button>`,
+  numCorrect: 0,
 };
 
 function updateStore() {
-  STORE.currqNum = qNumber;
-  STORE.currq = Questions[qNumber].question;
-  STORE.answers = Questions[qNumber].answers;
-  STORE.correctAnswers = Questions[qNumber].correctAnswer;
+  STORE.currq = Questions[STORE.currqNum].question;
+  STORE.answers = Questions[STORE.currqNum].answers;
+  STORE.correctAnswers = Questions[STORE.currqNum].correctAnswer;
 }
 
 function render() {
-  $('.questions').html(createNextQuestion());
-  if (qNumber < 5) {
-    changeQuestionNumber();
+  console.log("rendering");
+  $('.questions').html(STORE.questionStatement);
+  $('.quizIntro').html(STORE.intro);
+  if (STORE.currqNum < 6) {
+    $('.number').text(STORE.currqNum);
   }
-}
-
-function changeQuestionNumber() {
-  $('.number').text(qNumber + 1);
+  $('.grade').text(STORE.numCorrect);
 }
 
 function createNextQuestion() {
   //might need labels for radios
-  if (qNumber < 5) {
+  if (STORE.currqNum < 5) {
     //increment question counter
     updateStore();
-    return `<div class = "question-${qNumber}">
+    return `<div class = "question-${STORE.currqNum}">
                 <h1>${STORE.currq} </h1>
                 <form>
                   <label class="block">
@@ -85,7 +84,7 @@ function createNextQuestion() {
             </div>`
   } else {
     //this means you finished question 5
-    finishQuiz();
+    return finishQuiz();
   }
 }
 
@@ -98,6 +97,7 @@ function answerSumbitted() {
     } else {
       wrongAnswer();
     }
+    render();
   });
 }
 
@@ -106,9 +106,8 @@ function correctAnswer() {
                   <p>That was correct!</p>
                   <button type=button class="continueButton">Continue!</button>
                </div>`
-  $('.questions').html(output);
-  correct++;
-  $('.grade').text(correct);
+  STORE.questionStatement = output;
+  STORE.numCorrect++;
 }
 
 function wrongAnswer() {
@@ -116,12 +115,16 @@ function wrongAnswer() {
                   <p>That was incorrect. The correct answer is ${STORE.correctAnswers}.</p>
                   <button type=button class="continueButton">Continue!</button>
                </div>`
-  $('.questions').html(output);
+  STORE.questionStatement = output;
 }
 
 function nextQuestion() {
   $('main').on('click', '.continueButton', function(event) {
-    qNumber++;
+    console.log("continue");
+    console.log(STORE.currqNum);
+    //STORE.currqNum++;
+    STORE.questionStatement = createNextQuestion();
+    STORE.currqNum++;
     render();
     answerSumbitted();
   });
@@ -130,43 +133,47 @@ function nextQuestion() {
 
 function finishQuiz() {
   let output = `<div>
-                  <p>Great job you got ${correct} out of 5 questions correct! If you would like to try again please press the restart button.</p>
+                  <p>Great job you got ${STORE.numCorrect} out of 5 questions correct! If you would like to try again please press the restart button.</p>
                   <button type=button class="restartButton">Restart!</button>
                </div>`
-  $('.questions').html(output);
+  return output;
 }
 
 function resetQuiz() {
   $('main').on('click', '.restartButton', function(event) {
     let output = `<h1>Test your knowledge on the Office TV Show!</h1>
                   <button type="button" class="beginButton">Begin!</button>`
-    $('.quizIntro').html(output);
-    resetStartPage();
-    beginQuiz();
+    STORE.intro = output;
+    STORE.questionStatement = "";
+    STORE.numCorrect = 0;
+    STORE.currqNum = 0;
+    render();
   });
-  //
 }
 
-function resetStartPage() {
-  $('.questions').html("");
-  $('.grade').text(0);
-  $('.number').text(0);
-}
+function startQuiz() {
+  $('.quizIntro').on('click', '.beginButton', function(event) {
+    STORE.currqNum = 0;
+    STORE.numCorrect = 0;
+    STORE.intro = '<h1>Test your knowledge on the Office TV Show!</h1>';
+    STORE.questionStatement = createNextQuestion();
+    STORE.currqNum++;
+    render();
+    answerSumbitted();
 
+  });
+}
 
 function beginQuiz() {
   //keep the logo
   //get rid of statement and button
   //keep the stats on the bottom
-  qNumber = 0;
-  correct = 0;
-  $('.quizIntro').on('click', '.beginButton', function(event) {
-    $('.beginButton').remove();
-    render();
-    answerSumbitted();
-    nextQuestion();
-    resetQuiz();
-  });
+  STORE.currqNum = 0;
+  STORE.numCorrect = 0;
+  startQuiz();
+  answerSumbitted();
+  nextQuestion();
+  resetQuiz();
 }
 
 $(beginQuiz);
