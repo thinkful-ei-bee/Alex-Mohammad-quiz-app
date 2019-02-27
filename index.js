@@ -36,6 +36,7 @@ const STORE = {
   intro: `<h1>Test your knowledge on the Office TV Show!</h1>
   <button type="button" class="beginButton">Begin!</button>`,
   numCorrect: 0,
+  stats: "",
 };
 
 function updateStore() {
@@ -48,6 +49,7 @@ function render() {
   console.log("rendering");
   $('.questions').html(STORE.questionStatement);
   $('.quizIntro').html(STORE.intro);
+  $('.stats').html(STORE.stats);
   if (STORE.currqNum < 6) {
     $('.number').text(STORE.currqNum);
   }
@@ -122,7 +124,6 @@ function nextQuestion() {
   $('main').on('click', '.continueButton', function(event) {
     console.log("continue");
     console.log(STORE.currqNum);
-    //STORE.currqNum++;
     STORE.questionStatement = createNextQuestion();
     STORE.currqNum++;
     render();
@@ -135,7 +136,8 @@ function finishQuiz() {
   let output = `<div>
                   <h1>Great job you got ${STORE.numCorrect} out of 5 questions correct! If you would like to try again please press the restart button.</h1>
                   <button type=button class="restartButton">Restart!</button>
-               </div>`
+               </div>`;
+  STORE.stats = '';
   return output;
 }
 
@@ -147,6 +149,7 @@ function resetQuiz() {
     STORE.questionStatement = "";
     STORE.numCorrect = 0;
     STORE.currqNum = 0;
+
     render();
   });
 }
@@ -158,6 +161,10 @@ function startQuiz() {
     STORE.intro = '<h1>Test your knowledge on the Office TV Show!</h1>';
     STORE.questionStatement = createNextQuestion();
     STORE.currqNum++;
+    STORE.stats = `<ul>
+                    <li></li>Question <span class="number">0</span> out of 5</li>
+                    <li><span class="grade">0</span> questions answered correctly</li>
+                  </ul>`;
     render();
     answerSumbitted();
 
